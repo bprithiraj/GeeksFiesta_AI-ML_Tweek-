@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/static/style.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+ <div class="login">
+	<h1>Predict PM2.5 Analysis</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+        <input type="text" name="Year" placeholder="Year" required="required" />
+    	  <input type="text" name="Month" placeholder="Month" required="required" />
+    	  <input type="text" name="Date" placeholder="Date" required="required" />
+        <input type="text" name="Hour" placeholder="Hour" required="required" />
+    	  <input type="text" name="Windspeed" placeholder="Wind Speed" required="required" />
+        <input list="wind dir" type="text" name="winddirection" placeholder="Wind Direction" required="required" />
+        <input type="text" name="Pressure" placeholder="Pressure" required="required" />
+        <input type="text" name="Rain" placeholder="Rain" required="required" />
+        <input type="text" name="Temperature" placeholder="Temperature" required="required" />
+        <datalist id="wind dir">
+            <option value="0" >E</option>
+            <option value="1">ENE</option>
+            <option value="2">ESE</option>
+            <option value="3">N</option>
+            <option value="4">NE</option>
+            <option value="5">NNE</option>
+            <option value="6">NNW</option>
+            <option value="7">NW</option>
+            <option value="8">S</option>
+            <option value="9">SE</option>
+            <option value="10">SSE</option>
+            <option value="11">SSW</option>
+            <option value="12">SW</option>
+            <option value="13">W</option>
+            <option value="14">WNW</option>
+            <option value="15">WSW</option>
+          </datalist>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+<br>
+<mark>{{ prediction_text }}</mark>
+<br>
+<br>
+   {{ prediction_text1 }}          {{ prediction_text2 }}          {{ prediction_text3 }}
+   <br>
+   {{ prediction_text4 }}
+   <br>
+   <br>
+   {{ prediction_text5 }}              {{ prediction_text6 }}
+   <br>
+   {{ prediction_text7 }}              {{ prediction_text8 }}
+   <br>
+   {{ prediction_text9 }}
+ </div>
+
+
+</body>
+</html>
