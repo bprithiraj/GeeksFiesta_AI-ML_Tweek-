@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 TEMPLATES_AUTO_RELOAD=True
 
 app = Flask(__name__)
-model = pickle.load(open('model3.pkl', 'rb'))
+model = pickle.load(open('model5.pkl', 'rb'))
 
 df4=pd.read_csv("file2.csv")
 df5=df4.copy()
