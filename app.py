@@ -49,6 +49,8 @@ def predict():
     prediction[0]=sc3.inverse_transform(prediction[0].reshape(1,-1))
     output = prediction[0].astype("int")
     index=final_features[5].astype("int")
+    temp=(final_features[8]-273)
+    temp=round(temp,2)
     return render_template('index.html', prediction_text1='Year= {}'.format(final_features[0].astype("int")),
                                          prediction_text2='Month= {}'.format(final_features[1].astype("int")),
                                          prediction_text3='Day= {}'.format(final_features[2].astype("int")),
@@ -57,7 +59,7 @@ def predict():
                                          prediction_text6='Wind Direction= {}'.format(Dict[index]),
                                          prediction_text7='Pressure= {}'.format(final_features[6]),
                                          prediction_text8='Rain= {}'.format(final_features[7]),
-                                         prediction_text9='Temperature= {}'.format(final_features[8]-273),
+                                         prediction_text9='Temperature= {}'.format(temp),
                                          prediction_text='PM2.5 concentration is  {}'.format(output))
 @app.route('/predict_api',methods=['POST'])
 def predict_api():
